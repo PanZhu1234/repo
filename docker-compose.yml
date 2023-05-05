@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  db:
+    image: kobe19881208/gtb-mysql:8.0.29
+    restart: always
+    container_name: demo-todo
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'p@ssword'
+    ports:
+      - '3341:3306'
+    volumes:
+      - ./data:/var/lib/mysql
+  test_db:
+    image: kobe19881208/gtb-mysql:8.0.29
+    restart: always
+    container_name: demo-todo_test
+    environment:
+      MYSQL_DATABASE: 'db-test'
+      MYSQL_ROOT_PASSWORD: 'p@ssword'
+    ports:
+      - '3336:3306'
+    volumes:
+      - ./test_data:/var/lib/mysql
+
